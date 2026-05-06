@@ -80,6 +80,7 @@ def create_claims(db, n: int = 500) -> list[Claim]:
             patient_id=f"PAT-{fake.numerify('######')}",
             cpt_code=random.choice(CPT_CODES),
             payer=random.choice(PAYERS),
+            department=random.choice(DEPARTMENTS),   # línea nueva
             expected_amount=expected,
             paid_amount=paid_amount,
             status=status,

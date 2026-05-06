@@ -34,6 +34,7 @@ class Claim(Base):
     patient_id: Mapped[str] = mapped_column(String(50), nullable=False, index=True)
     cpt_code: Mapped[str] = mapped_column(String(10), nullable=False)
     payer: Mapped[str] = mapped_column(String(100), nullable=False, index=True)
+    department: Mapped[str] = mapped_column(String(100), nullable=True, index=True)
     expected_amount: Mapped[float] = mapped_column(Float, nullable=False)
     paid_amount: Mapped[float] = mapped_column(Float, nullable=True)
     status: Mapped[str] = mapped_column(String(20), nullable=False, index=True)
