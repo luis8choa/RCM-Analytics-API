@@ -111,3 +111,32 @@ class StaffWorkload(BaseModel):
     name: str
     pending_claims: int
     top_payer: str | None
+
+    # ── Alerts ────────────────────────────────────────────
+class AlertConfigBase(BaseModel):
+    metric: str
+    threshold: float
+    operator: str
+    webhook_url: str
+
+
+class AlertConfigCreate(AlertConfigBase):
+    pass
+
+
+class AlertConfigResponse(AlertConfigBase):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    is_active: bool
+    created_at: datetime
+
+
+class AlertTriggered(BaseModel):
+    alert_id: int
+    metric: str
+    current_value: float
+    threshold: float
+    operator: str
+    triggered_at: str
+    webhook_sent: bool

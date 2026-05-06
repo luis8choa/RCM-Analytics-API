@@ -7,6 +7,8 @@ from app.config import settings
 from app.routers import auth as auth_router
 from app.routers import claims as claims_router
 from app.routers import ar as ar_router
+from app.routers import staff as staff_router
+from app.routers import alerts as alerts_router
 
 
 @asynccontextmanager
@@ -39,6 +41,9 @@ app.add_middleware(
 app.include_router(auth_router.router)
 app.include_router(claims_router.router)
 app.include_router(ar_router.router)
+app.include_router(staff_router.router)
+app.include_router(alerts_router.router)
+
 
 @app.get("/", tags=["health"])
 def root():
