@@ -1,4 +1,5 @@
 # RCM-Analytics-API
+source .venv/bin/activate
 
 # Agregar una nueva dependencia en el futuro
 uv add nombre-del-paquete
@@ -49,3 +50,19 @@ uv run python seed.py
 
 # 5. Verificar que hay datos
 docker exec rcm_postgres psql -U rcm_user -d rcm_analytics -c "SELECT COUNT(*) FROM claims;"
+
+Ahora en el Swagger UI:
+
+Clic en Authorize
+username: luis@rcm.com
+password: rcm2024
+Clic en Authorize → Close
+
+# RCM Analytics API
+
+![CI](https://github.com/luis8choa/RCM-Analytics-API/actions/workflows/ci.yml/badge.svg)
+![Python](https://img.shields.io/badge/python-3.11-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115-green)
+![Coverage](https://img.shields.io/badge/coverage-93%25-brightgreen)
+
+Healthcare Revenue Cycle Management Analytics Platform...
