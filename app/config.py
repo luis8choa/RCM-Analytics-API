@@ -21,6 +21,9 @@ class Settings(BaseSettings):
     app_env: str = "development"
     app_port: int = 8000
 
+    allowed_origins: str = "http://localhost:3000,http://localhost:8080"
+
+
     @property
     def database_url(self) -> str:
         return (

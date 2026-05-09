@@ -42,7 +42,7 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:8080"],
+    allow_origins=settings.origins_list,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -95,4 +95,8 @@ async def root(request: Request):
 
 @app.get("/health", tags=["health"])
 async def health_check():
-    return {"status": "ok"}
+    return {
+        "status": "ok",
+        "env": settings.app_env,
+        "version": "0.1.0",
+    }
