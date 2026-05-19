@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     postgres_password: str
     postgres_db: str
     postgres_host: str
-    postgres_port: int = 5434
+    postgres_port: int = 5432
 
     secret_key: str
     algorithm: str = "HS256"
@@ -23,13 +23,16 @@ class Settings(BaseSettings):
 
     allowed_origins: str = "http://localhost:3000,http://localhost:8080"
 
-
     @property
     def database_url(self) -> str:
         return (
             f"postgresql://{self.postgres_user}:{self.postgres_password}"
             f"@{self.postgres_host}:{self.postgres_port}/{self.postgres_db}"
         )
+
+    @property
+    def origins_list(self) -> list[str]:
+        return [o.strip() for o in self.allowed_origins.split(",")]
 
 
 settings = Settings()
